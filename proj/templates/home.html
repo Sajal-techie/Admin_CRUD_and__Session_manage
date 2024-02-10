@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MY Mobile</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet"  href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="{% static 'js/alert.js' %}">  </script>
+</head>
+<body>
+<!-- header -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+
+      <a class="navbar-brand" href="#">My Mobile</a>
+    </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/logout/">
+      <span class="glyphicon glyphicon-log-in"></span> SignOut</a>
+        </li>
+      </ul>
+    </div>
+
+</nav>
+<!-- header end -->
+<!-- content  -->
+<div>    
+    <div class="text-center"> 
+      <h3><p> Hi {{ user | upper}} welcome to My mobile </p></h3>
+    </div>
+    <div >
+      <!-- display cards of mobiles -->
+      {% for mob in mobile_phones %}
+      <div class="card text-center " id="card1">
+        <img src="{% static 'images/' %}{{mob.img}}" class="card-img-top " alt="mobile pic">
+        <div class="card-body">
+          <h5 class="card-title">{{ mob.brand }}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{ mob.name }} </li>
+          <li class="list-group-item">prize:{{ mob.price }}</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" onclick="show()" class="card-link">Buy Now</a>
+        </div>
+
+      </div>
+      {% endfor %}
+    </div>  
+    
+  </div>
+<!-- end content -->
+
+</body>
+</html>
